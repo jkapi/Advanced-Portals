@@ -39,6 +39,19 @@ public class PluginMessageReceiver implements PluginMessageListener {
 
             Player targetPlayer = this.plugin.getServer().getPlayer(UUID.fromString(bungeeUUID));
 
+            plugin.getLogger().info("Target Destination: "+ targetDestination + " Bungee UUID: " + bungeeUUID);
+            if (targetPlayer == null) {
+                plugin.getLogger().info("Target Player is null from getPlayer, Player is " + player.getName());
+            } else {
+                plugin.getLogger().info("Target Player is" + targetPlayer.getName() + ", Player is " + player.getName());
+            }
+
+            plugin.getLogger().info("Logging all online Players:");
+            for (Player p:
+                    plugin.getServer().getOnlinePlayers()) {
+                plugin.getLogger().info("Player " + p.getName() + " with UUID " + p.getUniqueId().toString());
+            }
+
             if(teleportDelay <= 0) {
                 teleportPlayerToDesti(targetPlayer, targetDestination, bungeeUUID);
             } else {
